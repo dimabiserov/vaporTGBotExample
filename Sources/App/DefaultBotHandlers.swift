@@ -8,6 +8,11 @@
 import Vapor
 import telegram_vapor_bot
 
+struct T: Decodable {
+    let text: String
+ 
+}
+
 final class DefaultBotHandlers {
     
     static func addHandlers(app: Vapor.Application, bot: TGBotPrtcl) {
@@ -23,10 +28,12 @@ final class DefaultBotHandlers {
                 guard let body = result.body, let data = body.getData(at: 0, length: body.readableBytes) else {
                     return
                 }
-                let json = JSON(data: data)
-                if let fact = json.arrayValue.randomElement()?["text"].stringValue {
-                    try? update.message?.reply(text: fact, bot: bot)
+                let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: [])
+                guard let jsonArray = jsonResponse as? [[String: Any]],
+                      let title = jsonArray.randomElement()?["text"] as? String else {
+                      return
                 }
+                try? update.message?.reply(text: title, bot: bot)
             }
         }
         bot.connection.dispatcher.add(handler)

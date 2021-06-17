@@ -2,7 +2,7 @@ import Vapor
 import telegram_vapor_bot
 
 // configures your application
-let tgApi: String = "1640562793:AAENiw2BJCwwV2Cd7KWa6VNUKKWXN_PaGi4"
+let tgApi: String = "1640562793:AAGPpVPkT-RsNNRhl7t17Oxun2tYWrcf1qw"
 
 public func configure(_ app: Application) throws {
     // uncomment to serve files from /Public folder
