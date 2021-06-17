@@ -11,7 +11,7 @@
 #if canImport(FoundationNetworking)
 import FoundationNetworking
 #endif
-
+import Vapor
 import CoreFoundation
 import Foundation
 

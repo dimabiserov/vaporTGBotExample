@@ -26,6 +26,7 @@ import FoundationNetworking
 
 import Foundation
 import CoreFoundation
+import Vapor
 
 // MARK: - Error
 
